@@ -1,0 +1,17 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{book.BookName}}">
+    <ion-content class="padding">
+        <img ng-src="http://ezlearning.edu.vn/data/reading/{{book.BookLevel}}/{{book.FolderName}}/images/1.jpg"
+             style="width: 100%">
+
+        <div class="text-center">
+            <h2>
+                {{book.BookName}}
+            </h2></div>
+    </ion-content>
+</ion-view>
