@@ -47,11 +47,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
                     }
                 }
             })
-
+            .state('tab.reading', {
+                url: '/reading',
+                views: {
+                    'tab-books': {
+                        templateUrl: 'templates/reading.html',
+                        controller: 'ReadingCtrl'
+                    }
+                }
+            })
             .state('tab.book-detail', {
                 url: '/book/:bookId',
                 views: {
-                    'tab-book-detail': {
+                    'tab-books': {
                         templateUrl: 'templates/book-detail.html',
                         controller: 'BookDetailCtrl'
                     }

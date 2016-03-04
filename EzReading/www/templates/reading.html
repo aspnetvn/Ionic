@@ -1,0 +1,18 @@
+<ion-view view-title="Reading">
+    <ion-content>
+        <ion-list>
+            <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="book in books"
+                      type="item-text-wrap" href="#/tab/book/{{book.ID}}">
+                <img ng-src="http://ezlearning.edu.vn/data/reading/{{book.BookLevel}}/{{book.FolderName}}/images/1.jpg"/>
+
+                <h2>{{book.BookName}}</h2>
+                <h4>Level: {{book.BookLevel}}</h4>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+
+                <!--<ion-option-button class="button-assertive" ng-click="remove(book)">-->
+                    <!--Delete-->
+                <!--</ion-option-button>-->
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

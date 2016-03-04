@@ -1,19 +1,24 @@
 angular.module('starter.controllers', [])
-    .controller('BooksCtrl', function ($scope, $http, Books) {
-        $http.get("http://www.ezlearning.edu.vn/ezl/api/EzlApi/GetReadingBooks?level=A").then(function (response) {
-            $scope.books = response.data;
-            console.log('books: ', $scope.books);
+        .controller('BooksCtrl', function ($scope, BooksService, LoaderService) {
+            /* View Books */
+            LoaderService.show();
+            BooksService.all().success(function (response) {
+                $scope.books = response;
+                LoaderService.hide();
+            });
+
+            /* remove book */
+            $scope.remove = function (book) {
+                BooksService.remove(book);
+            }
+        })
+
+        .controller('BookDetailCtrl', function ($scope, $http, $stateParams, BooksService, LoaderService) {
+            console.log("Call BookDetailCtrl");
+            LoaderService.show();
+            BooksService.getDetails($stateParams.bookId).success(function (response) {
+                $scope.book = response;
+                LoaderService.hide();
+            });
+
         });
-
-        $scope.remove = function (book) {
-            Books.remove(book);
-        }
-    })
-
-    .controller('BookDetailCtrl', function ($scope, $http, $stateParams, Books) {
-
-        $http.get("http://www.ezlearning.edu.vn/ezl/api/EzlApi/GetReadingBook?id=" + $stateParams.bookId).then(function (response) {
-            $scope.book = response.data;
-            console.log('book: ', $scope.book);
-        });
-    });
